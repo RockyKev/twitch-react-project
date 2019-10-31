@@ -1,22 +1,89 @@
+/* MAIN APP */
+
 .App {
-  text-align: center;
+  max-width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flexbox {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 90vh;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #09d3ac;
+.main {
+  flex: 3;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+/* HEADER COMPONENT */
+.header {
+  width: 100%;
+  font-weight: 900;
+  text-align: left;
+  padding: 20px 0;
+  background-color: #9146FF;
+  color: white;
+  font-size: 22px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background-color: pink;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* MAIN BODY */
+
+.main {
+  overflow-y: auto;
+}
+
+.main-inner {
+  padding: 10px 40px;
+}
+
+
+/* SEARCH FIELD */
+input {
+  padding: 10px;
+  width: 300px;
+} 
+
+label {
+  font-weight: 900;
+}
+
+.search-content, .search-results {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+
+.results ul {
+  list-style-type: none;  
+  padding: 0px;
+}
+
+.results ul a {
+  text-decoration: none;
+}
+
+/* HELPERS */
+.strong {
+  font-weight: 900;
+}
+
+.box {
+  border: black 1px solid;
+  padding: 10px;
+  width: 250px;
+  margin: 6px 0px;
 }
