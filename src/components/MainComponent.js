@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 
-const API = 'https://hn.algolia.com/api/v1/search?query=';
-const DEFAULT_QUERY = 'redux'
+// const API = 'https://hn.algolia.com/api/v1/search?query=';
+// const DEFAULT_QUERY = 'redux'
+
+const API = 'https://api.twitch.tv/kraken/search/games?query=';
+const DEFAULT_QUERY = 'star';
 
 class Main extends Component {
     constructor(props) {
@@ -17,7 +20,12 @@ class Main extends Component {
     componentDidMount() {
         this.setState({ isLoading: true});
 
-        fetch(API + DEFAULT_QUERY)
+        fetch(API + DEFAULT_QUERY, {
+            method: 'get', 
+            headers: new Headers({
+                'Client-ID': '55kfu5hfxy957tos1zc8bbshc0ym34'
+            })
+        })
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -26,7 +34,10 @@ class Main extends Component {
             }
         })
         .then(data => {
-            this.setState({ hits: data.hits, isLoading: false })
+            // this.setState({ hits: data.hits, isLoading: false })
+            this.setState({ hits: data.data, isLoading: false });
+            console.log(this.state.hits);
+
         })
         .catch(error => {
             this.setState({ error, isLoading: false })
@@ -45,15 +56,16 @@ class Main extends Component {
         if (isLoading) {
             searchData = <p> Loading ... </p>;            
         } else {
-            searchData = (
-                <ul>
-                {hits.map(hit => 
-                    <li className="box" key={hit.objectID}>
-                        <a href={hit.url}> {hit.title}</a>
-                    </li>
-                )}
-            </ul>
-            );
+            // searchData = (
+            //     <ul>
+            //     {hits.map(hit => 
+            //         <li className="box" key={hit.id}>
+            //             <a href={hit.thumbnail_url}> {hit.user_name}</a>
+            //         </li>
+            //     )}
+            // </ul>
+            // );
+            {console.log(hits[0])};
         }
         
         return (
